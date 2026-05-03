@@ -236,7 +236,10 @@ def assistant():
 
     return jsonify({"reply": "\n".join(lines), "meta": meta})
 
-
+@app.get("/")
+def index():
+    return jsonify({"message": "NutriMap API is running!", "status": "ok"})
+    
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "8080"))
     app.run(host="0.0.0.0", port=port, debug=False)
