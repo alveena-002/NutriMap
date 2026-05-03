@@ -41,7 +41,7 @@ HUGGINGFACE_API_KEY=your_hf_api_key
 | Member | Role |
 |--------|------|
 | Alveena Kamal, Hamna Almas | Frontend Developer — React.js, UI/UX |
-| [Tahreem Bibi, Rafia] | Backend Developer — Flask, MongoDB, AI APIs |
+| Tahreem Bibi, Rafia | Backend Developer — Flask, MongoDB, AI APIs |
 
 **Event:** UN SDG Hackathon 2026
 
