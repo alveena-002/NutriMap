@@ -1,3 +1,5 @@
+Live Link:
+https://nutri-map-git-master-alveena-002s-projects.vercel.app/
 ---
 
 ## 🚀 Getting Started
@@ -63,3 +65,18 @@ HUGGINGFACE_API_KEY=your_hf_api_key
   <strong>NutriMap · Mapping Zero Hunger with AI Intelligence</strong><br/>
   <em>SDG 2 · SDG 3 · SDG 10 · Pakistan 🇵🇰</em>
 </div>
+
+<img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/a016c10a-8414-4aad-9738-22485637905f" />
+
+<img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/c56de8c7-7dd1-42d5-81d2-55052e33deb0" />
+
+<img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/b1d25f4d-a5f0-465b-b000-c886d80a1904" />
+
+<img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/1ac85448-ead0-46cd-854a-0af974fa3c86" />
+
+<img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/d2f9b6fc-a187-42c6-be59-5714547d5696" />
+
+
+
+
+**
