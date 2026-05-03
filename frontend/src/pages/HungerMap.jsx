@@ -59,12 +59,9 @@ export default function HungerMap() {
             'interpolate',
             ['linear'],
             ['get', 'intensity'],
-            0,
-            NEON,
-            0.5,
-            '#f97316',
-            1,
-            '#dc2626',
+            0, NEON,
+            0.5, '#f97316',
+            1, '#dc2626',
           ],
           'circle-opacity': 0.76,
           'circle-blur': 0.55,
@@ -84,24 +81,20 @@ export default function HungerMap() {
           intensity: typeof r.intensity === 'number' ? r.intensity : Number.parseFloat(String(r.intensity)),
         })
       })
-      map.on('mouseenter', 'hunger-heat', () => {
-        map.getCanvas().style.cursor = 'pointer'
-      })
-      map.on('mouseleave', 'hunger-heat', () => {
-        map.getCanvas().style.cursor = ''
-      })
+      map.on('mouseenter', 'hunger-heat', () => { map.getCanvas().style.cursor = 'pointer' })
+      map.on('mouseleave', 'hunger-heat', () => { map.getCanvas().style.cursor = '' })
 
       setMapReady(true)
     })
 
-    return () => {
-      map.remove()
-    }
+    return () => { map.remove() }
   }, [])
 
   return (
-    <div className="relative isolate px-4 pb-16 pt-4 sm:px-6 md:pt-6 lg:mx-auto lg:mb-12 lg:flex lg:min-h-[calc(100svh-11rem)] lg:max-h-[calc(100svh-6rem)] lg:max-w-[1680px] lg:flex-col">
-      <div className="glass-strong relative z-20 mb-4 flex shrink-0 flex-col gap-3 rounded-2xl px-5 py-4 shadow-lg shadow-black/40 sm:flex-row sm:items-center sm:justify-between lg:absolute lg:left-10 lg:right-auto lg:top-6 lg:z-40 lg:mb-0 lg:max-w-xl lg:rounded-full lg:px-6 lg:py-3">
+    <div className="relative isolate flex h-[calc(100svh-5rem)] w-full flex-col overflow-hidden px-4 pt-4 sm:px-6 lg:mx-auto lg:max-w-[1680px]">
+      
+      {/* Header */}
+      <div className="glass-strong relative z-20 mb-4 flex shrink-0 flex-col gap-3 rounded-2xl px-5 py-4 shadow-lg shadow-black/40 sm:flex-row sm:items-center sm:justify-between lg:rounded-full lg:px-6 lg:py-3">
         <div>
           <h1 className="font-display text-xl font-bold text-white md:text-2xl">Hunger heat index</h1>
           <p className="mt-1 max-w-xl text-[12px] leading-relaxed text-slate-400 sm:text-[13px]">
@@ -121,20 +114,21 @@ export default function HungerMap() {
         </div>
       </div>
 
-      <div className="relative flex-1 lg:min-h-0">
+      {/* Main content */}
+      <div className="relative min-h-0 flex-1">
+        
+        {/* Map container */}
         <div
-          className="glass-strong relative z-10 overflow-hidden rounded-3xl border border-white/[0.08] shadow-[0_0_80px_rgba(0,0,0,0.65)] lg:absolute lg:inset-0 lg:rounded-[2rem]"
+          className="glass-strong absolute inset-0 overflow-hidden rounded-3xl border border-white/[0.08] shadow-[0_0_80px_rgba(0,0,0,0.65)]"
           style={{
-            boxShadow:
-              '0 28px 100px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(0,255,136,0.08)',
-            minHeight: 'min(68vh, 720px)',
+            boxShadow: '0 28px 100px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(0,255,136,0.08)',
           }}
         >
           {!fallback && (
-            <div ref={mapRef} className="absolute inset-0 h-full min-h-[min(68vh,720px)] w-full lg:min-h-0" aria-label="Pakistan hunger map" />
+            <div ref={mapRef} className="absolute inset-0 h-full w-full" aria-label="Pakistan hunger map" />
           )}
           {fallback && (
-            <div className="absolute inset-0 flex min-h-[min(68vh,720px)] flex-col bg-gradient-to-br from-[#030510] via-nm-surface to-black lg:min-h-0">
+            <div className="absolute inset-0 flex flex-col bg-gradient-to-br from-[#030510] via-nm-surface to-black">
               <div className="relative flex flex-1 items-center justify-center p-6">
                 <div
                   className="absolute inset-0 opacity-40"
@@ -185,10 +179,9 @@ export default function HungerMap() {
                     )
                   })}
                 </svg>
-
-                <p className="absolute bottom-6 left-4 right-4 text-center text-[11px] text-slate-500 md:left-10 md:right-auto md:text-left">
-                  Fallback canvas projection — portable for demos.
-                  Add <span className="font-mono text-nm-neon">VITE_MAPBOX_ACCESS_TOKEN</span> for{' '}
+                <p className="absolute bottom-4 left-4 right-4 text-center text-[11px] text-slate-500">
+                  Fallback canvas projection — Add{' '}
+                  <span className="font-mono text-nm-neon">VITE_MAPBOX_ACCESS_TOKEN</span> for{' '}
                   <span className="text-nm-cyan">Mapbox GL</span>.
                 </p>
               </div>
@@ -204,22 +197,19 @@ export default function HungerMap() {
           )}
         </div>
 
-        <aside className="relative z-30 mt-5 flex flex-col gap-5 lg:absolute lg:inset-y-24 lg:right-8 lg:left-auto lg:mt-0 lg:w-[21rem] lg:max-h-[calc(100%-12rem)]">
-          <div className="glass-strong card-lift max-h-[50vh] overflow-y-auto rounded-3xl border border-nm-cyan/25 p-5 shadow-xl shadow-black/50 lg:max-h-none">
+        {/* Sidebar */}
+        <aside className="pointer-events-none absolute bottom-4 right-4 top-4 z-30 flex w-[21rem] flex-col gap-4 overflow-y-auto lg:pointer-events-auto">
+          
+          {/* Selected Zone */}
+          <div className="glass-strong card-lift rounded-3xl border border-nm-cyan/25 p-5 shadow-xl shadow-black/50">
             <div className="flex items-center justify-between gap-2">
               <p className="text-[11px] font-bold uppercase tracking-[0.26em] text-nm-cyan">Selected zone</p>
               {selected?.intensity != null && (
                 <span
                   className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase"
                   style={{
-                    background:
-                      selected.intensity > 0.8
-                        ? 'rgba(220,38,38,0.2)'
-                        : selected.intensity > 0.5
-                          ? 'rgba(251,146,60,0.2)'
-                          : 'rgba(0,255,136,0.16)',
-                    color:
-                      selected.intensity > 0.8 ? '#fecaca' : selected.intensity > 0.5 ? '#fdba74' : '#86efac',
+                    background: selected.intensity > 0.8 ? 'rgba(220,38,38,0.2)' : selected.intensity > 0.5 ? 'rgba(251,146,60,0.2)' : 'rgba(0,255,136,0.16)',
+                    color: selected.intensity > 0.8 ? '#fecaca' : selected.intensity > 0.5 ? '#fdba74' : '#86efac',
                   }}
                 >
                   {(selected.intensity * 100).toFixed(0)}% stress
@@ -242,9 +232,7 @@ export default function HungerMap() {
                   </div>
                   <div className="flex justify-between gap-2 rounded-xl bg-black/25 px-3 py-2 font-mono text-[11px] text-slate-400">
                     <span>LAT / LNG</span>
-                    <span>
-                      {selected.lat?.toFixed(2)}, {selected.lng?.toFixed(2)}
-                    </span>
+                    <span>{selected.lat?.toFixed(2)}, {selected.lng?.toFixed(2)}</span>
                   </div>
                 </dl>
               </>
@@ -255,6 +243,7 @@ export default function HungerMap() {
             )}
           </div>
 
+          {/* Priority Runway */}
           <div className="glass-strong card-lift rounded-3xl border border-white/[0.08] p-5 shadow-xl shadow-black/50">
             <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-500">Priority runway</p>
             <ul className="mt-4 space-y-2">
